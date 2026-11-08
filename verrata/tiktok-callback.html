@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{max-width:680px;margin:40px auto;padding:0 20px;font:17px/1.6 Georgia,serif;color:#222}h1{font-size:28px}h2{font-size:20px;margin-top:28px}nav{margin-top:32px;font-size:15px}code{background:#f3f3f3;padding:6px 8px;display:block;word-break:break-all;font-size:15px}</style><title>Sign-in complete · Verrata Studio Publisher</title><meta name="robots" content="noindex"></head><body>
+<h1>Sign-in complete</h1>
+<p id="msg">Copy the code below and give it to the publishing tool. It is single-use and expires in a few minutes.</p>
+<code id="code"></code>
+<p><button id="copy">Copy code</button></p>
+<script>
+const q=new URLSearchParams(location.search);const c=q.get("code"),e=q.get("error");
+document.getElementById("code").textContent=c?c+"  state="+(q.get("state")||""):"";
+if(!c){document.getElementById("msg").textContent=e?("TikTok returned an error: "+e+" "+(q.get("error_description")||"")):"No code in this address.";document.getElementById("copy").hidden=true;}
+document.getElementById("copy").onclick=()=>navigator.clipboard.writeText(c).then(()=>{document.getElementById("copy").textContent="Copied";});
+</script>
+<nav><a href="./">Home</a> · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a></nav></body></html>
